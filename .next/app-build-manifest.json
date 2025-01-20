@@ -15,11 +15,6 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(dashboard)/page.js"
     ],
-    "/(dashboard)/search/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(dashboard)/search/page.js"
-    ],
     "/(dashboard)/accounting/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",

@@ -1,4 +1,10 @@
 {
+  "node_modules\\@mui\\x-data-grid-premium\\esm\\hooks\\features\\export\\serializer\\excelSerializer.js -> exceljs": {
+    "id": "node_modules\\@mui\\x-data-grid-premium\\esm\\hooks\\features\\export\\serializer\\excelSerializer.js -> exceljs",
+    "files": [
+      "static/chunks/_app-pages-browser_node_modules_exceljs_dist_exceljs_min_js.js"
+    ]
+  },
   "node_modules\\next\\dist\\client\\components\\react-dev-overlay\\internal\\helpers\\use-websocket.js -> @vercel/turbopack-ecmascript-runtime/browser/dev/hmr-client/hmr-client.ts": {
     "id": "node_modules\\next\\dist\\client\\components\\react-dev-overlay\\internal\\helpers\\use-websocket.js -> @vercel/turbopack-ecmascript-runtime/browser/dev/hmr-client/hmr-client.ts",
     "files": [
