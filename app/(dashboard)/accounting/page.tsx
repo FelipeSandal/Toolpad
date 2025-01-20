@@ -75,6 +75,20 @@ const mockRows = [
     credit: 2500.0,
     hierarchy: ["2", "2.1"],
   },
+  {
+    batchId: "BATCH002",
+    transactionId: "TRX004",
+    entryIdFrom: 7,
+    entryIdTo: 8,
+    branchName: "Downtown Branch",
+    transferNumber: 12348,
+    transactionDate: "2024-03-21",
+    voucherDate: "2024-03-21",
+    accountId: "ACC004",
+    debit: null,
+    credit: 257800.0,
+    hierarchy: ["2", "2.2"],
+  },
 ];
 
 // Column definitions
