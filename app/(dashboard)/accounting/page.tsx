@@ -1,7 +1,8 @@
 "use client";
 
-import { DataGridPremium } from "@mui/x-data-grid-premium";
-
+import { DataGridPremium, GridToolbar } from "@mui/x-data-grid-premium";
+import { Box } from "@mui/material";
+import { nbNO } from "@mui/x-data-grid/locales";
 // Utility functions
 const formatDate = (value: string | undefined) => {
   if (!value) return "";
@@ -176,9 +177,22 @@ export default function AccountingPage() {
           treeData={true}
           disableRowSelectionOnClick={true}
           getTreeDataPath={(row) => row.hierarchy}
+          localeText={nbNO.components.MuiDataGrid.defaultProps.localeText}
           initialState={{
             pagination: {
               paginationModel: { pageSize: 100 },
+            },
+          }}
+          slots={{
+            toolbar: GridToolbar,
+          }}
+          slotProps={{
+            toolbar: {
+              showQuickFilter: true,
+              filterButtonActive: true, // Filter
+              showColumnsButton: true, // Kolonner
+              showDensitySelector: true, // Tetthet
+              showExport: true, // Eksporter
             },
           }}
           sx={{
