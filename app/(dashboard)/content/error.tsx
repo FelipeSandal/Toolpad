@@ -2,8 +2,6 @@
 
 import { useEffect } from "react";
 
-import { useTranslations } from "@/lib/i18n";
-
 export default function Error({
   error,
   reset,
@@ -11,8 +9,6 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  const t = useTranslations("exceptionClientMessages");
-
   useEffect(() => {
     console.error(error);
   }, [error]);
@@ -20,9 +16,9 @@ export default function Error({
   return (
     <div className="my-28 flex justify-center">
       <div className="flex-col">
-        <p>{t("tryAgainNowOrLater")}</p>
+        <p>Please try again now or later</p>
         <button onClick={() => window.location.reload()}>
-          {t("tryAgain")}
+          Try Again
         </button>
       </div>
     </div>

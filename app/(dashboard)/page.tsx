@@ -22,7 +22,7 @@ export default function HomePage() {
           </Link>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Link href="/reports" passHref>
+        <Link href="/content/reports" passHref>
             <Paper sx={{ p: 2, height: "100%", cursor: 'pointer' }}>
               <h3>
                 <FactCheckIcon sx={{ fontSize: 32, mr: 1 }} /> Rapport
