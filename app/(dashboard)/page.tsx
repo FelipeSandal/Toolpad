@@ -11,66 +11,75 @@ export default function HomePage() {
   return (
     <Box sx={{ flexGrow: 1, p: 3 }}>
       <Grid container spacing={4}>
-        <Grid item xs={12} sm={6}>
-          <Link href="/gebryendringer" passHref>
-            <Paper sx={{ p: 2, height: "100%", cursor: 'pointer' }}>
-              <h3>
-                <PaidIcon sx={{ fontSize: 32, mr: 1 }} /> Gebryendringer
-              </h3>
-              <p>Oversikt og endring av termingebyrer..</p>
-            </Paper>
-          </Link>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-        <Link href="/content/reports" passHref>
-            <Paper sx={{ p: 2, height: "100%", cursor: 'pointer' }}>
-              <h3>
-                <FactCheckIcon sx={{ fontSize: 32, mr: 1 }} /> Rapport
-              </h3>
-              <p>Oversikt over rapporter om økonomisk status og aktiviteter.</p>
-            </Paper>
-          </Link>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Link href="/faktura" passHref>
-            <Paper sx={{ p: 2, height: "100%", cursor: 'pointer' }}>
-              <h3>
-                <ReceiptIcon sx={{ fontSize: 32, mr: 1 }} /> Faktura
-              </h3>
-              <p>Oversikt over faktura.</p>
-            </Paper>
-          </Link>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Link href="/depot" passHref>
-            <Paper sx={{ p: 2, height: "100%", cursor: 'pointer' }}>
-              <h3>
-                <WarehouseIcon sx={{ fontSize: 32, mr: 1 }} /> Depot
-              </h3>
-              <p>Oversikt over depot.</p>
-            </Paper>
-          </Link>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Link href="/jobber" passHref>
-            <Paper sx={{ p: 2, height: "100%", cursor: 'pointer' }}>
-              <h3>
-                <WorkIcon sx={{ fontSize: 32, mr: 1 }} /> Jobber
-              </h3>
-              <p>Grensesnitt for planlagte jobber.</p>
-            </Paper>
-          </Link>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Link href="/simba" passHref>
-            <Paper sx={{ p: 2, height: "100%", cursor: 'pointer' }}>
-              <h3>
-                <AccountBalanceIcon sx={{ fontSize: 32, mr: 1 }} /> SIMBA
-              </h3>
-              <p>Oversikt av SIMBA</p>
-            </Paper>
-          </Link>
-        </Grid>
+        {[
+          {
+            href: "/gebryendringer",
+            icon: <PaidIcon sx={{ fontSize: 32, mr: 1 }} />,
+            title: "Gebryendringer",
+            description: "Oversikt og endring av termingebyrer.."
+          },
+          {
+            href: "/content/reports",
+            icon: <FactCheckIcon sx={{ fontSize: 32, mr: 1 }} />,
+            title: "Rapport",
+            description: "Oversikt over rapporter om økonomisk status og aktiviteter."
+          },
+          {
+            href: "/faktura",
+            icon: <ReceiptIcon sx={{ fontSize: 32, mr: 1 }} />,
+            title: "Faktura",
+            description: "Oversikt over faktura."
+          },
+          {
+            href: "/depot",
+            icon: <WarehouseIcon sx={{ fontSize: 32, mr: 1 }} />,
+            title: "Depot",
+            description: "Oversikt over depot."
+          },
+          {
+            href: "/jobber",
+            icon: <WorkIcon sx={{ fontSize: 32, mr: 1 }} />,
+            title: "Jobber",
+            description: "Grensesnitt for planlagte jobber."
+          },
+          {
+            href: "/simba",
+            icon: <AccountBalanceIcon sx={{ fontSize: 32, mr: 1 }} />,
+            title: "SIMBA",
+            description: "Oversikt av SIMBA"
+          }
+        ].map((item, index) => (
+          <Grid item xs={12} sm={6} key={index}>
+            <Link 
+              href={item.href}
+              style={{ textDecoration: 'none' }}
+            >
+              <Paper 
+                elevation={2}
+                sx={{ 
+                  p: 2, 
+                  height: "100%", 
+                  width: "100%",
+                  cursor: 'pointer',
+                  display: 'block',
+                  border: 'none',
+                  textAlign: 'left',
+                  '& h3': {
+                    transition: 'color 0.2s',
+                    '&:hover': {
+                      color: 'lightgreen'
+                    }
+                  }
+                }}
+              >
+                <h3>
+                  {item.icon} {item.title}
+                </h3>
+                <p>{item.description}</p>
+              </Paper>
+            </Link>
+          </Grid>
+        ))}
       </Grid>
     </Box>
   );
