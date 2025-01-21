@@ -91,6 +91,7 @@ const mockRows = [
   },
 ];
 
+console.log("b" + "a"+ + "a" + "a");
 // Column definitions
 const columns = [
   {
@@ -140,7 +141,7 @@ const columns = [
     headerAlign: "left",
     align: "left",
     aggregable: false,
-    renderCell: ({ value }) => formatDate(value),
+    renderCell: ({ value }: { value: number }) => formatAmount(value),
   },
   {
     flex: 1,
@@ -149,7 +150,7 @@ const columns = [
     headerAlign: "left",
     align: "left",
     aggregable: false,
-    renderCell: ({ value }) => formatDate(value),
+    renderCell: ({ value }: { value: number }) => formatAmount(value),
   },
   {
     flex: 1,
@@ -166,7 +167,7 @@ const columns = [
     headerName: "Debit",
     headerAlign: "left",
     align: "left",
-    renderCell: ({ value }) => formatAmount(value),
+    renderCell: ({ value }: { value: number }) => formatAmount(value),
   },
   {
     flex: 1,
@@ -175,7 +176,7 @@ const columns = [
     headerName: "Credit",
     headerAlign: "left",
     align: "left",
-    renderCell: ({ value }) => formatAmount(value),
+    renderCell: ({ value }: { value: number }) => formatAmount(value),
   },
 ];
 
@@ -203,7 +204,7 @@ export default function AccountingPage() {
           slotProps={{
             toolbar: {
               showQuickFilter: true,
-              filterButtonActive: true, // Filter
+              showFilterButton: true, // Filter
               showColumnsButton: true, // Kolonner
               showDensitySelector: true, // Tetthet
               showExport: true, // Eksporter
