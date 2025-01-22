@@ -14,9 +14,9 @@ function ReportsPage() {
         value={tabValue}
         onChange={(event, newValue) => setTabValue(newValue)}
       >
-        <Tab label="Test Tab" sx={{ textTransform: "none" }} />
-        <Tab label="Test Tab" sx={{ textTransform: "none" }} />
-        <Tab label="Test Tab" sx={{ textTransform: "none" }} />
+        <Tab label="Oversikt Restlån Ajour" sx={{ textTransform: "none" }} />
+        <Tab label="Oversikt Restlån Ajour 2" sx={{ textTransform: "none" }} />
+        <Tab label="Oversikt Restlån Ajour 3" sx={{ textTransform: "none" }} />
       </Tabs>
 
       <Box sx={{ mt: 3 }}>
