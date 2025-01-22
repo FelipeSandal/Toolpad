@@ -1,46 +1,58 @@
 "use client";
 
-import { useState } from "react";
-import { Box, Tabs, Tab, FormControl, FormLabel, TextField } from "@mui/material";
+import dynamic from "next/dist/shared/lib/dynamic";
+import { SetStateAction, useEffect, useState } from "react";
 
-function ReportsPage() {
+import {
+  Box,
+  FormControl,
+  FormLabel,
+  Tab,
+  Tabs,
+  TextField,
+} from "@mui/material";
+
+import reportsConfiguration from "./reportsConfiguration.json";
+
+const PowerBiReport = dynamic(() => import("./PowerBIreport"), { ssr: false });
+
+interface reportsConfig {
+  name: string;
+  id: string;
+  embedUrl: string;
+}
+
+export default function Reports() {
+  const [reportsConfig, setReportsConfig] = useState<reportsConfig[]>([]);
+
   const [tabValue, setTabValue] = useState(0);
-  const [accessToken, setAccessToken] = useState<string>("");
+
+  useEffect(() => {
+    setReportsConfig(reportsConfiguration);
+  }, []);
 
   return (
     <Box sx={{ width: "100%" }}>
-      <h1>Reports Page</h1>
       <Tabs
         value={tabValue}
-        onChange={(event, newValue) => setTabValue(newValue)}
+        onChange={(event: any, newTabValue: SetStateAction<number>) => {
+          setTabValue(newTabValue);
+        }}
+        aria-label="basic tabs example"
       >
-        <Tab label="Oversikt Restlån Ajour" sx={{ textTransform: "none" }} />
-        <Tab label="Oversikt Restlån Ajour 2" sx={{ textTransform: "none" }} />
-        <Tab label="Oversikt Restlån Ajour 3" sx={{ textTransform: "none" }} />
+        {reportsConfig.map((tabReport, index) => (
+          <Tab
+            key={index}
+            label={tabReport.name}
+            sx={{ textTransform: "none" }}
+          />
+        ))}
       </Tabs>
-
-      <Box sx={{ mt: 3 }}>
-        <form>
-          <FormControl fullWidth margin="normal">
-            <Box display="flex" alignItems="center">
-              <FormLabel htmlFor="accessToken" sx={{ mr: "10px", ml: "10px" }}>
-                Access token:
-              </FormLabel>
-              <TextField
-                id="accessToken"
-                value={accessToken}
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setAccessToken(event.target.value);
-                }}
-                size="small"
-                variant="outlined"
-              />
-            </Box>
-          </FormControl>
-        </form>
-      </Box>
+      {reportsConfig.map((config, index) => (
+        <div key={index} hidden={tabValue !== index}>
+          <PowerBiReport reportId={config.id} embedUrl={config.embedUrl} />
+        </div>
+      ))}
     </Box>
   );
 }
-
-export default ReportsPage;

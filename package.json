@@ -13,10 +13,11 @@
         "@mui/icons-material": "^6",
         "@mui/material": "^6.4.0",
         "@mui/material-nextjs": "^6",
-        "@mui/x-data-grid-premium": "^7.24.0",
         "@mui/x-data-grid": "^7.24.0",
+        "@mui/x-data-grid-premium": "^7.24.0",
         "@toolpad/core": "0.12.0",
         "next": "^15",
+        "powerbi-client-react": "^1.4.0",
         "react": "^19",
         "react-dom": "^19"
     },
