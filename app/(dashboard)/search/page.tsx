@@ -1,31 +1,32 @@
-"use client"
+"use client";
+
 import Head from 'next/head';
 import styles from '../content/styles/Home.module.css';
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import { useState } from "react";
 import { Grid2 } from '@mui/material';
-import { getArrayItem } from "./SearchFunctionality";
+
+import { useState, useEffect } from 'react';
+import dataUser from './mockup_data_person.json';
 import Grid2DisplayData from "./GridDataDisplay";
-import type ClientDetailProps from './MockData'
+import SearchField from './SearchField';
+import { userDetailsTransformed } from './SearchFunctionality';
+
 
 export default function Home() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filteredData, setFilteredDatas] = useState<Array<ClientDetailProps>>([]);
 
-  function handleSearch() {
-    const matchingItems = getArrayItem(searchQuery);
-    const flatItems = Array.isArray(matchingItems[0]) ? matchingItems.flat() : matchingItems;
-    setFilteredDatas(flatItems);
-  }
+  
+  const [filteredData, setFilteredDatas] = useState([]);
+  
+  const [transformedUserData, setTransformedUserData] = useState([]);
 
-  // Function to handle key down events in the search input
-  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
-    if (event.key === 'Enter') {
-      handleSearch();
-    }
-  }
+  useEffect(() => {
+    const transformed = userDetailsTransformed(dataUser);
+    console.log("Transformed User Data:", transformed); // Debug
+    setTransformedUserData(transformed);
+  }, []);
 
+  console.log("filtered dAta:", filteredData)
   return (
     <div className={styles.container}>
       <Head>
@@ -34,46 +35,51 @@ export default function Home() {
       </Head>
 
       <main>
-        <Box sx={{ p: 2 }}>
-          <Box sx={{ 
-            display: 'flex',
-            justifyContent: 'center',
-            gap: 2,
-            mb: 4,
-            mt: 2
-          }}>
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Search..."
-              style={{
-                padding: '10px',
-                borderRadius: '5px',
-                border: '1px solid #ccc',
-                width: '300px'
-              }}
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            minHeight: "100vh",
+          }}
+        >
+          <div style={{ position: "fixed", top: "100px", zIndex: 1000 }}>
+            <SearchField
+              setFilteredData={setFilteredDatas}
+              transformedData={transformedUserData} // Pass full data here
+              transformedUserData={transformedUserData}
             />
-            <button 
-              onClick={handleSearch}
-              style={{
-                padding: '10px 20px',
-                borderRadius: '5px',
-                border: '1px solid #ccc',
-                cursor: 'pointer',
-                backgroundColor: 'grey'
-              }}
-            >
-              Search
-            </button>
-          </Box>
+          </div>
 
-          <Box>
-            <Grid2DisplayData filteredDatas={filteredData} />
+          <Box
+            sx={{
+              width: "100%",
+              marginTop: "30px",
+              minHeight: "calc(100vh - 80px)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Grid2 container spacing={1}>
+              <Grid2DisplayData filteredDatas={filteredData} />
+            </Grid2>
           </Box>
         </Box>
       </main>
+
+      <footer>
+        <a
+          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Powered by{' '}
+          <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
+        </a>
+      </footer>
 
       <style jsx>{`
         main {

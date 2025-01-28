@@ -31,7 +31,7 @@ export default function HomePage() {
             description: "Oversikt over faktura."
           },
           {
-            href: "/depot",
+            href: "content/depot",
             icon: <WarehouseIcon sx={{ fontSize: 32, mr: 1 }} />,
             title: "Depot",
             description: "Oversikt over depot."

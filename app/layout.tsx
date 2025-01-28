@@ -32,7 +32,7 @@ const NAVIGATION: Navigation = [
 ];
 
 const BRANDING = {
-  title: "My Toolpad Core Next.js App",
+  title: "My Toolpad Core",
 };
 
 export default function RootLayout(props: { children: React.ReactNode }) {
