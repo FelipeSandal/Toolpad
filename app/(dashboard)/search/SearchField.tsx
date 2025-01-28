@@ -2,8 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { styled } from '@mui/system';
 import useAutocomplete from '@mui/material/useAutocomplete';
-import ClientDetailProps from './MockData';
-import UserDataProps from './MockDataUser';
+import { ClientDetailProps, UserDataProps } from './MockData';
 
 const Label = styled('label')({
   display: 'block',
@@ -44,6 +43,7 @@ const Listbox = styled('ul')(({ theme }) => ({
   }),
 }));
 
+
 interface SearchFieldProps {
   setFilteredData: (data: ClientDetailProps[]) => void;
   transformedUserData: UserDataProps[]; // Receive transformed user data as prop
@@ -70,7 +70,7 @@ export default function SearchField({ setFilteredData, transformedUserData, tran
     } = useAutocomplete<UserDataProps>({
       id: 'search-field',
       options: searchQuery ? filteredUserData : [], // Use filtered user data for options
-      getOptionLabel: (option) => `${option.PersonNumber} - ${option.LoanID}`, // Combine PersonNumber and LoanIDs
+      getOptionLabel: (option) => `${option.Name, option.PersonNumber} - ${option.LoanID}`, // Combine PersonNumber and LoanIDs
       onChange: (_, newValue) => {
         if (newValue) {
           // Find matching ClientDetailProps for the selected user's LoanIDs
@@ -109,12 +109,12 @@ export default function SearchField({ setFilteredData, transformedUserData, tran
   
               return (
                 <li
-                  key={option.PersonNumber} // Use PersonNumber as key
+                  key={option.PersonNumber} 
                   {...optionProps}
                   onClick={() => handleOptionClick(option)}
                 >
-                  {/* Display PersonNumber and LoanIDs */}
-                  {`${option.PersonNumber} - ${option.LoanID}`}
+                  
+                  {`${option.Name} - ${option.PersonNumber} - ${option.LoanID}`}
                 </li>
               );
             })}

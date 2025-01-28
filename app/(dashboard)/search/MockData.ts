@@ -1,4 +1,4 @@
-export default interface ClientDetailProps {
+export interface ClientDetailProps {
     KontoID: number;
     Kundegruppe: string;
     Valuta: string;
@@ -19,3 +19,8 @@ export default interface ClientDetailProps {
 }
 
 
+export interface UserDataProps {
+    PersonNumber: number;
+    LoanID: string; 
+    Name: string;
+}

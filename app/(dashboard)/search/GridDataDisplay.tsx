@@ -63,10 +63,6 @@ const Grid2DisplayData: React.FC<Grid2DisplayDataProps> = ({ filteredDatas }) =>
     }));
   };
 
-  if (!filteredLoans.length) {
-    return <p>No data available.</p>;
-  }
-
   return (
     <Grid2 container direction="column" spacing={2}>
       {filteredLoans.map((element, index) => (
