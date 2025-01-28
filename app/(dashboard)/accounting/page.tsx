@@ -204,10 +204,6 @@ export default function AccountingPage() {
           slotProps={{
             toolbar: {
               showQuickFilter: true,
-              showFilterButton: true, // Filter
-              showColumnsButton: true, // Kolonner
-              showDensitySelector: true, // Tetthet
-              showExport: true, // Eksporter
             },
           }}
           sx={{
