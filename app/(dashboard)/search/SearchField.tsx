@@ -9,7 +9,7 @@ const Label = styled('label')({
 });
 
 const Input = styled('input')(({ theme }) => ({
-  width: 200,
+  width: 400,
   backgroundColor: '#fff',
   color: '#000',
   ...theme.applyStyles('dark', {

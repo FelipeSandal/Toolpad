@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import data from './mockup_data.json';
 import { Grid2 } from '@mui/material';
-import ClientDetailProps from './MockData';
+import { ClientDetailProps } from './MockData';
 
 interface Grid2DisplayDataProps {
   filteredDatas: ClientDetailProps[];
@@ -37,10 +37,11 @@ function transformData(data: any): ClientDetailProps[] {
 const transformedData = transformData(data);
 
 const Grid2DisplayData: React.FC<Grid2DisplayDataProps> = ({ filteredDatas }) => {
+
   const [filteredLoans, setFilteredLoans] = useState<ClientDetailProps[]>([]);
   const [openIndexes, setOpenIndexes] = useState<OpenIndexes>({});
 
-  // Function to get filtered loans
+  
   function getLoanDetailsItem(personDataArray: ClientDetailProps[]) {
     if (!personDataArray || personDataArray.length === 0) return [];
     const personData = personDataArray[0];
@@ -48,14 +49,14 @@ const Grid2DisplayData: React.FC<Grid2DisplayDataProps> = ({ filteredDatas }) =>
     return filteredLoan;
   }
 
-  // Fetch filtered loan data when component loads
+  
   useEffect(() => {
     const loans = getLoanDetailsItem(filteredDatas);
     console.log('Filtered loans on load:', loans);
     setFilteredLoans(loans);
   }, [filteredDatas]);
 
-  // Toggle function for individual elements
+  
   const toggleDetails = (index: number) => {
     setOpenIndexes((prev) => ({
       ...prev,
